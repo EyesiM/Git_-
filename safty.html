@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>safety first</title>
+    <link rel="stylesheet" href="safety.css">
+</head>
+<body>
+    <div class="safety">
+        <ul>
+            <li class="current">Caesar 密码</li>
+            <li>playfair 密码</li>
+            <li>hill 密码</li>
+        </ul>
+        <div class="caesar">
+            <div class="add-password">
+                <h3>Caesar 加密</h3>
+                <div class="input-group">
+                    <input type="text" placeholder='请输入需要加密的明文' id="caesarOpen" class="open-password"> 
+                    <span class='clear'>x</span>                    
+                </div>
+                <div class="password">
+                    <h4>加密后的结果为：</h4>
+                    <p>asdasd adas asasdas dadas asd asasd asdasdas asd asdasd asdsa asd</p>
+                </div>
+            </div>
+            <div class="remove-password">
+                <h3>Caesar 解密</h3>
+                <div class="input-group">
+                    <input type="text" placeholder='请输入需要解密的密文' id="caesarPassword" class="close-password"> 
+                    <span class='clear'>x</span>                    
+                </div>
+                <div class="password">
+                    <h4>加密后的结果为：</h4>
+                    <p></p>
+                </div>
+            </div>
+
+        </div>
+        <div class="playfair">
+            <div class="add-password">
+                <h3>Playfair 加密</h3>
+                <div class="input-group">
+                    <input type="text" placeholder='请输入需要加密的明文' id="playfairOpen" class="open-password"> 
+                    <span class='clear'>x</span>                    
+                </div>
+                <div class="password">
+                    <h4>加密后的结果为：</h4>
+                    <p>asdasd adas asasdas dadas asd asasd asdasdas asd asdasd asdsa asd</p>
+                </div>
+            </div>
+            <div class="remove-password">
+                <h3>Playfair 解密</h3>
+                <div class="input-group">
+                    <input type="text" placeholder='请输入需要解密的密文' id="playfairPassword" class="close-password"> 
+                    <span class='clear'>x</span>                    
+                </div>
+                <div class="password">
+                    <h4>加密后的结果为：</h4>
+                    <p></p>
+                </div>
+            </div>
+        </div>
+        <div class="hill">
+            <div class="add-password">
+                <h3>Hill 加密</h3>
+                <div class="input-group">
+                    <input type="text" placeholder='请输入需要加密的明文' id="hillOpen" class="open-password"> 
+                    <span class='clear'>x</span>                    
+                </div>
+                <div class="password">
+                    <h4>加密后的结果为：</h4>
+                    <p>asdasd adas asasdas dadas asd asasd asdasdas asd asdasd asdsa asd</p>
+                </div>
+            </div>
+            <div class="remove-password">
+                <h3>Hill 解密</h3>
+                <div class="input-group">
+                    <input type="text" placeholder='请输入需要解密的密文' id="hillPassword" class="close-password"> 
+                    <span class='clear'>x</span>                    
+                </div>
+                <div class="password">
+                    <h4>加密后的结果为：</h4>
+                    <p></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src='./zepto.min.js'></script>
+    <script src='./safety.js'></script>
+</body>
+</html>
