@@ -19,6 +19,13 @@
                     <input type="text" placeholder='请输入需要加密的明文' id="caesarOpen" class="open-password"> 
                     <span class='clear'>x</span>                    
                 </div>
+                <div class="input-group">
+                    <input type="number" placeholder='请输入加密的密钥' id="caesarAddKey" class="open-password"> 
+                    <span class='clear'>x</span>                    
+                </div>
+                <button id="caesarAdd" class="sumit">
+                    确定
+                </button>
                 <div class="password">
                     <h4>加密后的结果为：</h4>
                     <p id="caesarAnswer"></p>
@@ -27,9 +34,16 @@
             <div class="remove-password">
                 <h3>Caesar 解密</h3>
                 <div class="input-group">
-                    <input type="text" placeholder='请输入需要解密的密文' id="caesarPassword" class="close-password"> 
+                    <input type="text" placeholder='请输入需要解密的密文' id="caesarPassword" class="open-password"> 
                     <span class='clear'>x</span>                    
                 </div>
+                <div class="input-group">
+                    <input type="number" placeholder='请输入加密的密钥' id="caesarKey" class="open-password"> 
+                    <span class='clear'>x</span>                    
+                </div>
+                <button id="caesarRemove" class="sumit">
+                    确定
+                </button>
                 <div class="password">
                     <h4>加密后的结果为：</h4>
                     <p id="caesarCode"></p>
@@ -44,17 +58,31 @@
                     <input type="text" placeholder='请输入需要加密的明文' id="playfairOpen" class="open-password"> 
                     <span class='clear'>x</span>                    
                 </div>
+                <div class="input-group">
+                    <input type="text" placeholder='请输入加密的密钥' id="playfairKey" class="open-password"> 
+                    <span class='clear'>x</span>                    
+                </div>
+                <button id="playfairAdd" class="sumit">
+                    确定
+                </button>                
                 <div class="password">
                     <h4>加密后的结果为：</h4>
-                    <p>asdasd adas asasdas dadas asd asasd asdasdas asd asdasd asdsa asd</p>
+                    <p id="playfairAanswer">asdasd adas asasdas dadas asd asasd asdasdas asd asdasd asdsa asd</p>
                 </div>
             </div>
             <div class="remove-password">
                 <h3>Playfair 解密</h3>
                 <div class="input-group">
-                    <input type="text" placeholder='请输入需要解密的密文' id="playfairPassword" class="close-password"> 
+                    <input type="text" placeholder='请输入需要解密的密文' id="playfairPassword" class="open-password"> 
                     <span class='clear'>x</span>                    
                 </div>
+                <div class="input-group">
+                    <input type="text" placeholder='请输入加密的密钥' id="playfairRKey" class="open-password"> 
+                    <span class='clear'>x</span>                    
+                </div>
+                <button id="palyfairRemove" class="sumit">
+                    确定
+                </button>
                 <div class="password">
                     <h4>加密后的结果为：</h4>
                     <p></p>
@@ -76,7 +104,7 @@
             <div class="remove-password">
                 <h3>Hill 解密</h3>
                 <div class="input-group">
-                    <input type="text" placeholder='请输入需要解密的密文' id="hillPassword" class="close-password"> 
+                    <input type="text" placeholder='请输入需要解密的密文' id="hillPassword" class="open-password"> 
                     <span class='clear'>x</span>                    
                 </div>
                 <div class="password">
