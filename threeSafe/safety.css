@@ -84,6 +84,7 @@ h3 {
 
 }
 .password {
+    margin: 10px;
     width: 60%;
 }
 .password>p {
@@ -122,4 +123,18 @@ h3 {
 }
 .sumit:focus {
     background: #f44;
+}
+#hillRm {
+    padding: 10px;
+}
+.key-lists {
+    padding: 10px 20px 10px 0;
+    min-width: 100%;
+    min-height: 20px;
+    background: #e6e6e6;
+}
+.keyList {
+    display: inline-block;
+    width: 40px;
+    text-align: center;
 }

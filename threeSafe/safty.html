@@ -20,7 +20,7 @@
                     <span class='clear'>x</span>                    
                 </div>
                 <div class="input-group">
-                    <input type="number" placeholder='请输入加密的密钥' id="caesarAddKey" class="open-password"> 
+                    <input type="number" placeholder='请输入加密密钥的数字' id="caesarAddKey" class="open-password"> 
                     <span class='clear'>x</span>                    
                 </div>
                 <button id="caesarAdd" class="sumit">
@@ -38,7 +38,7 @@
                     <span class='clear'>x</span>                    
                 </div>
                 <div class="input-group">
-                    <input type="number" placeholder='请输入加密的密钥' id="caesarKey" class="open-password"> 
+                    <input type="number" placeholder='请输入解密密钥的数字' id="caesarKey" class="open-password"> 
                     <span class='clear'>x</span>                    
                 </div>
                 <button id="caesarRemove" class="sumit">
@@ -67,7 +67,7 @@
                 </button>                
                 <div class="password">
                     <h4>加密后的结果为：</h4>
-                    <p id="playfairAanswer">asdasd adas asasdas dadas asd asasd asdasdas asd asdasd asdsa asd</p>
+                    <p id="playfairAanswer"></p>
                 </div>
             </div>
             <div class="remove-password">
@@ -85,7 +85,7 @@
                 </button>
                 <div class="password">
                     <h4>加密后的结果为：</h4>
-                    <p></p>
+                    <p id="playRemoveA"></p>
                 </div>
             </div>
         </div>
@@ -96,25 +96,32 @@
                     <input type="text" placeholder='请输入需要加密的明文' id="hillOpen" class="open-password"> 
                     <span class='clear'>x</span>                    
                 </div>
+                <button id="hillAdd" class="sumit">
+                    确定
+                </button>  
                 <div class="password">
                     <h4>加密后的结果为：</h4>
-                    <p>asdasd adas asasdas dadas asd asasd asdasdas asd asdasd asdsa asd</p>
+                    <p id='hillAnswer'></p>
+                </div>
+                <div class="password" class="key-lists">
+                    <h4>加密的密钥为：</h4>
+                    <div id="hillKey"></div>
                 </div>
             </div>
             <div class="remove-password">
                 <h3>Hill 解密</h3>
-                <div class="input-group">
-                    <input type="text" placeholder='请输入需要解密的密文' id="hillPassword" class="open-password"> 
-                    <span class='clear'>x</span>                    
-                </div>
+                <p id='hillRm'>点击确定对上面加密后的密文进行解密：</p>
+                <button id="hillRemove" class="sumit">
+                    确定
+                </button>  
                 <div class="password">
-                    <h4>加密后的结果为：</h4>
-                    <p></p>
+                    <h4>解密后的结果为：</h4>
+                    <p id="hillRmAnswer"></p>
                 </div>
             </div>
         </div>
     </div>
-    <script src='./zepto.min.js'></script>
+    <script src='../zepto.min.js'></script>
     <script src='./safety.js'></script>
 </body>
 </html>
