@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>RSA 数字签名体制</title>
+  <link rel="stylesheet" href="../threeSafe/safety.css">
+</head>
+<body>
+      <div class="safety">
+        <ul>
+            <li class="current rsa-head">RSA 数字签名体制</li>
+        </ul>
+        <div class="rsa playfair">
+            <div class="add-password">
+                <h3>生成密钥</h3>
+                <p class='hillRm'>点击确定生成公钥与私钥：</p>
+                <button id="rsaToKey" class="sumit">
+                    确定
+                </button>   
+                <div class="password" class="key-lists">
+                    <h4>加密的密钥为：</h4>
+                    <div id="rsaKey" class="key"></div>
+                </div>             
+            </div>
+            <div class="add-password">
+                <h3>明文加密</h3>
+                <div class="input-group">
+                    <input type="number" placeholder='请输入需要加密的明文,例如:12356' id="rsaOpen" class="open-password"> 
+                    <span class='clear'>x</span>                    
+                </div>
+                <button id="rsaAdd" class="sumit">
+                    确定
+                </button>                
+                <div class="password">
+                    <h4>加密后的结果为：</h4>
+                    <p id="rsaAanswer"></p>
+                </div>
+            </div>
+            <div class="remove-password">
+                <h3>密文解密</h3>
+                <p class='hillRm'>点击确定对上面加密后的密文进行解密：</p>
+                <button id="rsaRemove" class="sumit">
+                    确定
+                </button>
+                <div class="password">
+                    <h4>解密后的结果为：</h4>
+                    <p id="rsaRemoveA"></p>
+                </div>
+            </div>
+        </div>
+    </div>  
+    <script src='../zepto.min.js'></script>
+    <script src='rsaSafe.js'></script>
+</body>
+</html>

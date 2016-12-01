@@ -28,6 +28,9 @@ html,body {
     cursor: pointer;
     text-align: center;
 }
+.safety .rsa-head {
+    width: 100%;
+}
 .safety li:last-child {
     margin: 0;
     border: none;
@@ -45,6 +48,9 @@ html,body {
 }
 .caesar {
     /*display: none;*/
+}
+.rsa.playfair {
+    display: block;
 }
 .playfair {
     display: none;
@@ -124,7 +130,7 @@ h3 {
 .sumit:focus {
     background: #f44;
 }
-#hillRm {
+.hillRm {
     padding: 10px;
 }
 .key-lists {
@@ -137,4 +143,14 @@ h3 {
     display: inline-block;
     width: 40px;
     text-align: center;
+}
+.keySpan {
+    display: inline-block;
+    width: 80%;
+}
+.key {
+    padding: 10px;
+    width: 100%;
+    min-height: 64px;
+    box-shadow: 0 0 10px 2px #e7e7e7;
 }

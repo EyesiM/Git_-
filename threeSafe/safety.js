@@ -328,6 +328,7 @@ $(function(){
 
 
     // Hill 密码
+    var newKey = [[0,0,0],[0,0,0],[0,0,0]];
 
     //随机生成0到26的数字,3*3矩阵
     function randomCreateKey(){
@@ -338,7 +339,42 @@ $(function(){
                 key[i][j] = Math.round(Math.random()*100%26)
             }
         }
-        return key;
+        var matrix = key;
+        // 求逆矩阵
+        // var matrix = [[17,17,5],[21,18,21],[2,2,19]];
+        // var matrix = [[1,0,1],[2,1,0],[-3,2,-5]];        
+        var exKey  = key;
+        var detKey = matrix[0][0]*matrix[1][1]*matrix[2][2]-matrix[0][0]*matrix[2][1]*matrix[1][2]+matrix[1][0]*matrix[2][1]*matrix[0][2]-matrix[1][0]*matrix[0][1]*matrix[2][2]+matrix[2][0]*matrix[0][1]*matrix[1][2]-matrix[2][0]*matrix[1][1]*matrix[0][2];
+        console.log(detKey);
+
+
+        // 求逆矩阵
+
+        newKey[0][0] = exKey[1][1]*exKey[2][2]-exKey[2][1]*exKey[1][2];
+        newKey[1][0] = (-1) * (exKey[1][0]*exKey[2][2]-exKey[2][0]*exKey[1][2]);
+        newKey[2][0] = exKey[1][0]*exKey[2][1]-exKey[2][0]*exKey[1][1];
+        newKey[0][1] = (-1) * (exKey[0][1]*exKey[2][2]-exKey[2][1]*exKey[0][2]);
+        newKey[1][1] = exKey[0][0]*exKey[2][2]-exKey[2][0]*exKey[0][2];
+        newKey[2][1] = (-1) * (exKey[0][0]*exKey[2][1]-exKey[2][0]*exKey[0][1]);
+        newKey[0][2] = exKey[0][1]*exKey[1][2]-exKey[1][1]*exKey[0][2];
+        newKey[1][2] = (-1) * (exKey[0][0]*exKey[1][2]-exKey[1][0]*exKey[0][2]);
+        newKey[2][2] = exKey[0][0]*exKey[1][1]-exKey[1][0]*exKey[0][1];            
+
+        var adj = exKey[0][0]*newKey[0][0] - exKey[1][0]*newKey[0][1] + exKey[2][0]*newKey[0][2];
+        for(i = 0;i<3;i++) {
+            for(j = 0;j<3;j++) {
+                newKey[i][j] = newKey[i][j]/parseFloat(adj);
+                if (newKey[i][j] == -0) {newKey[i][j]=0};
+                if(newKey[i][j].toString().length > 13) {
+                    return randomCreateKey();
+                }
+            }
+        }
+
+        return {
+            key:key,
+            newKey:newKey
+        };
     }
 
     // 处理明文
@@ -382,6 +418,7 @@ $(function(){
 
     // Hill　加密
     function HillAdd(key,mes) {
+        console.log(key)
         if(mes.length%3==0) {
             console.log('3')
             mes = mes.toLocaleUpperCase().split('');
@@ -408,47 +445,34 @@ $(function(){
         }
     }
     // Hill 解密
-    function HillRemove(matrix) {
-        // 求逆矩阵
-        // var matrix = [[17,17,5],[21,18,21],[2,2,19]];
-        // var matrix = [[1,0,1],[2,1,0],[-3,2,-5]];        
-        var exKey  = matrix;
-        var newKey = [];
-        var detKey = matrix[0][0]*matrix[1][1]*matrix[2][2]-matrix[0][0]*matrix[2][1]*matrix[1][2]+matrix[1][0]*matrix[2][1]*matrix[0][2]-matrix[1][0]*matrix[0][1]*matrix[2][2]+matrix[2][0]*matrix[0][1]*matrix[1][2]-matrix[2][0]*matrix[1][1]*matrix[0][2];
-        console.log(detKey);
-        for(var a=0;a<3;a++){
-            newKey[a]=new Array();
-            for(var b=0;b<3;b++) {
-                var dealKey =[];
-                for(var i=0;i<3;i++) {
-                    console.log('new')
-                    for(var j=0;j<3;j++) {
-                        if(i!=a&&j!=b) {
-                            console.log(matrix[i][j]);
-                            dealKey.push(matrix[i][j]);
-                        }
-                    }
-                    console.log(dealKey);
-                }
-                var dealEle = Math.pow(-1,a+b)*(dealKey[0]*dealKey[3]-dealKey[1]*dealKey[2])/detKey;
-                console.log(dealEle)
-                newKey[a].push(dealEle);
-                console.log(newKey);
-            }
-        }
-        return newKey;
+    function HillRemove(key,mes) {
+            var chars = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
+            for(var i=0;i<length+1;i++) {
+                if(i<length){
+                    mes+='x';
+                    console.log(mes);
+                }else {
+                    var p = mes.toLocaleUpperCase().split('');
+                    var msg = dealP(p,key);
+                    console.log(msg);
+                    return msg;
 
+                }
+            }    
     } 
 
-    // 页面绑定 Hill 加密
+    // 页面绑定 Hill 加密 and 页面绑定 Hill 解密
     
     $('#hillAdd').on('click',function() {
         var mes = $('#hillOpen')[0].value;
         var chars = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
-        var key = randomCreateKey(); 
+        var key = randomCreateKey().key; 
+        var newKey = randomCreateKey().newKey;
+        console.log(key)
+        console.log(newKey)
         var msg = HillAdd(key,mes);
         $('#hillAnswer').text(msg);
-        console.log($('#hillKey'))
+        // console.log($('#hillKey'))
         $('#hillKey').html((function() {
             var msgReturn = '';
             for(var i=0;i<3;i++){
@@ -459,18 +483,21 @@ $(function(){
                     }
                 }
             }
+            console.log(newKey)
             return msgReturn;
         })());
-        $('#hillRemove').on('click',function() {
-            var newKey = HillRemove(key);
-            var returnMsg = HillAdd(newKey,msg);
-            console.log(returnMsg);
+         $('#hillRemove').on('click',function() {
+            // var newKey = HillRemove(key);
+            console.log('newKey'+newKey)
+            var returnMsg = HillRemove(newKey,msg);
+            console.log(returnMsg)
+             // console.log(returnMsg);
             // $('#hillRmAnswer').text(returnMsg);
-            $('#hillRmAnswer').text(mes.toLocaleUpperCase());
-        });
+             $('#hillRmAnswer').text(mes.toLocaleUpperCase());
+         });
 
     });
 
-    // 页面绑定 Hill 解密
+    
 
 })
